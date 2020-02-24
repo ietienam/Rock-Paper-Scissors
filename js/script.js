@@ -1,6 +1,8 @@
 function computerPlay() {
+  var options = ['rock', 'paper', 'scissors'];
+  var selection = options[Math.floor(Math.random() * 3)];
 
-  return
+  return selection;
 }
 
 function singleRound(playerSelection, computerSelection) {
@@ -9,5 +11,5 @@ function singleRound(playerSelection, computerSelection) {
 }
 
 function game() {
-  
+
 }
