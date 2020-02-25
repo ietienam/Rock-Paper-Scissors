@@ -32,6 +32,11 @@ function singleRound(playerSelection, computerSelection = computerPlay()) {
   }
 }
 
+/**
+ * Return the winner after 5 rounds
+ * and show each of their scores.
+ * The one with the highest wins.
+ */
 function game() {
   
 }
