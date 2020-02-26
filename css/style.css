@@ -1,0 +1,75 @@
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0 auto;
+  max-width: 100%;
+  width: 100%;
+  min-height: 100%;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+header {
+  width: 100%;
+  margin: 0 auto;
+  padding: .5rem;
+}
+
+header h1 {
+  margin: 0 auto;
+  text-align: center;
+}
+
+ul {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  list-style: none;
+  padding: .5rem;
+}
+
+.score {
+  width: 100%;
+  text-align: center;
+  padding: .5rem;
+}
+
+.roundWinner {
+  width: 100%;
+  padding: .5rem;
+}
+
+.choices {
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+}
+
+.choices button {
+  padding: 1.3rem;
+  margin-left: 10px;
+  outline: 0;
+  border: 0;
+}
+
+.rock {
+  background: url('../img/rock.png');
+}
+
+.paper {
+  background: url('../img/paper.png');
+}
+
+.scissors {
+  background: url('../img/scissors.png');
+}
+
+.result {
+  width: 100%;
+}
