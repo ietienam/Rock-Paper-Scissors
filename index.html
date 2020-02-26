@@ -20,14 +20,25 @@
       <li>Scissors cuts paper</li>
     </ul>
     <div class="score">
-      <span class="user"></span>
-      <span class="computer"></span>
+      <span class="userScore"></span>
+      <span class="computerScore"></span>
+      <!--Return the results of the game function winner-->
       <p class="roundWinner"></p>
     </div>
     <div class="choices">
-      <span class="rock"></span>
-      <span class="paper"></span>
-      <span class="scissors"></span>
+      <div class="userChoice">
+        <button class="rock" value="rock"></button>
+        <button class="paper" value="paper"></button>
+        <button class="scissors" value="scissors"></button>
+      </div>
+      <div class="computerChoice">
+        <!--Hide display until user selects and then display computer selection-->
+        <button class="crock" value="rock"></button>
+        <button class="cpaper" value="paper"></button>
+        <button class="cscissors" value="scissors"></button>
+      </div>
+      <!--Display return value from singleRound function-->
+      <p class="result"></p>
     </div>
     <div class="showChoice">
       <span class="userChoice"></span>
