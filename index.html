@@ -14,36 +14,36 @@
       <h1>Rock Paper Scissors</h1>
     </header>
     <ul>
-      <h2>Winning scenarios...</h2>
       <li>Rock breaks scissors</li>
       <li>Paper covers rock</li>
       <li>Scissors cuts paper</li>
     </ul>
     <div class="score">
-      <span class="userScore"></span>
-      <span class="computerScore"></span>
+      <h2>Scores</h2>
+      <span class="userScore">2</span>
+      <span>-</span>
+      <span class="computerScore">2</span>
       <!--Return the results of the game function winner-->
       <p class="roundWinner"></p>
     </div>
     <div class="choices">
+      <button class="startGame">Start Game</button>
+      <button class="resetGame">Reset Game</button>
       <div class="userChoice">
+        <p>Make a choice! And may the odds be in your favor</p>
         <button class="rock" value="rock"></button>
         <button class="paper" value="paper"></button>
         <button class="scissors" value="scissors"></button>
       </div>
+      <p>vs</p>
       <div class="computerChoice">
         <!--Hide display until user selects and then display computer selection-->
-        <button class="crock" value="rock"></button>
-        <button class="cpaper" value="paper"></button>
-        <button class="cscissors" value="scissors"></button>
+        <button class="rock" value="rock"></button>
+        <button class="paper" value="paper"></button>
+        <button class="scissors" value="scissors"></button>
       </div>
       <!--Display return value from singleRound function-->
       <p class="result"></p>
-    </div>
-    <div class="showChoice">
-      <span class="userChoice"></span>
-      <span class="computerChoice"></span>
-      <p class="winOrLose"></p>
     </div>
   </div>
 
