@@ -18,32 +18,32 @@
       <li>Paper covers rock</li>
       <li>Scissors cuts paper</li>
     </ul>
-    <div class="score">
+    <div class="onStart score">
       <h2>Scores</h2>
-      <span class="userScore">2</span>
+      <span class="userScore">0</span>
       <span>-</span>
-      <span class="computerScore">2</span>
+      <span class="computerScore">0</span>
       <!--Return the results of the game function winner-->
       <p class="roundWinner"></p>
     </div>
     <div class="choices">
       <button class="startGame">Start Game</button>
       <button class="resetGame">Reset Game</button>
-      <div class="userChoice">
-        <p>Make a choice! And may the odds be in your favor</p>
-        <button class="rock" value="rock"></button>
-        <button class="paper" value="paper"></button>
-        <button class="scissors" value="scissors"></button>
+      <div class="onStart userChoice">
+        <p>First to score 5 points!!! Make a choice! And may the odds be in your favor</p>
+        <button class="userBtn rock" value="rock"></button>
+        <button class="userBtn paper" value="paper"></button>
+        <button class="userBtn scissors" value="scissors"></button>
       </div>
       <p>vs</p>
-      <div class="computerChoice">
+      <div class="onStart computerChoice">
         <!--Hide display until user selects and then display computer selection-->
         <button class="rock" value="rock"></button>
         <button class="paper" value="paper"></button>
         <button class="scissors" value="scissors"></button>
       </div>
       <!--Display return value from singleRound function-->
-      <p class="result"></p>
+      <p class="onStart result"></p>
     </div>
   </div>
 

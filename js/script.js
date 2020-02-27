@@ -1,3 +1,6 @@
+// variables
+var start = document.querySelector
+
 // Computer randomly selects either rock, paper or scissors
 function computerPlay() {
   var options = ['rock', 'paper', 'scissors'];
@@ -38,5 +41,5 @@ function singleRound(playerSelection, computerSelection = computerPlay()) {
  * The one with the highest wins.
  */
 function game() {
-  
+
 }
