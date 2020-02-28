@@ -14,10 +14,8 @@ var startButton = document.querySelector('.startGame');
 var resetButton = document.querySelector('.resetGame');
 var roundResult = document.querySelector('.result');
 var gameWinner = document.querySelector('.roundWinner');
-var user = document.querySelector('.userScore').textContent;
-var computer = document.querySelector('.computerScore').textContent;
-var userScore = 0;
-var computerScore = 0;
+var userScore = document.querySelector('.userScore');
+var computerScore = document.querySelector('.computerScore');
 
 // all selections
 var gameModeDisplay = document.querySelectorAll('.onStart');
@@ -68,10 +66,16 @@ function singleRound(playerSelection, computerSelection) {
 }
 
 function reset() {
-  userScore = 0;
-  computerScore = 0;
+  userScore.textContent = '0';
+  computerScore.textContent = '0';
   roundResult.textContent = '';
   gameWinner.textContent = '';
+  userBtn.forEach(btn => {
+    btn.classList.remove('hidden');
+  });
+  compBtn.forEach(btn => {
+    btn.classList.remove('hidden');
+  });
 }
 
 function start() {
@@ -86,27 +90,41 @@ function announceWinner(userScore, computerScore) {
 }
 
 function canEndGame(userScore, computerScore) {
-  return (userScore >= 5 || computerScore >=5) ? true : false;
+  return (userScore === 5 || computerScore === 5) ? true : false;
 }
 
 userBtn.forEach(btn => {
   btn.addEventListener('click', e => {
+    e.preventDefault();
     var computerSelection = computerPlay();
     var userSelection = btn.value;
     var result = singleRound(userSelection, computerSelection);
+    var user = Number(userScore.textContent);
+    var computer = Number(computerScore.textContent);
 
     if (result === 'win') {
-      userScore += 1;
-      user = `${userScore}`;
+      user += 1;
+      userScore.textContent = `${user}`;
       roundResult.textContent = `You Win! ${userSelection} beats ${computerSelection}!`;
     } else if (result === 'lose') {
-      computerScore += 1;
-      computer = `${computerScore}`;
+      computer += 1;
+      computerScore.textContent = `${computer}`;
       roundResult.textContent = `You Lose! ${computerSelection} beats ${userSelection}!`;
     } else {
       roundResult.textContent = `Draw!`;
     }
-  })
+
+    if (canEndGame(user, computer) === true) {
+      resetButton.classList.remove('hidden');
+      userBtn.forEach(btn => {
+        btn.classList.add('hidden');
+      });
+      compBtn.forEach(btn => {
+        btn.classList.add('hidden');
+      });
+      announceWinner(user, computer);
+    }
+  });
 })
 
 startButton.addEventListener('click', e => {
