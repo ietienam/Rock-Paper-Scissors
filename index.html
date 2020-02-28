@@ -10,32 +10,43 @@
 </head>
 
 <body>
-  <div id="container">
-    <div id="round-result">START THE GAME</div>
-    <div id="score-board">
-      User Score: <span id="user-score">0</span>
-      Computer Score: <span id="computer-score">0</span>
+  <div class="container">
+    <header>
+      <h1>Rock Paper Scissors</h1>
+    </header>
+    <ul>
+      <li>Rock breaks scissors</li>
+      <li>Paper covers rock</li>
+      <li>Scissors cuts paper</li>
+    </ul>
+    <div class="onStart hidden score">
+      <h2>Scores</h2>
+      User
+      <span class="userScore">0</span>
+      <span>-</span>
+      <span class="computerScore">0</span>
+      Computer
+      <!--Return the results of the game function winner-->
+      <p class="roundWinner"></p>
     </div>
-    <div id="reset-box">
-      <button id="reset-btn">Play Again?</button>
-    </div>
-
-    <div id="rps-boxes">
-      <div id="rock" class="rps-item">
-        <button type="button" class="rps-button">
-          <i class="far fa-hand-rock fa-9x"></i>
-        </button>
+    <div class="choices">
+      <button class="startGame">Start Game</button>
+      <button class="resetGame">Reset Game</button>
+      <div class="onStart hidden userChoice">
+        <p>First to score 5 points!!! Make a choice! And may the odds be in your favor</p>
+        <button class="userBtn rock" value="rock"><i class="far fa-hand-rock fa-2x" aria-hidden="true"></i></button>
+        <button class="userBtn paper" value="paper"><i class="far fa-hand-paper fa-2x" aria-hidden="true"></i></button>
+        <button class="userBtn scissors" value="scissors"><i class="far fa-hand-scissors fa-2x" aria-hidden="true"></i></button>
       </div>
-      <div id="paper" class="rps-item">
-        <button type="button" class="rps-button">
-          <i class="far fa-hand-paper fa-9x"></i>
-        </button>
+      <p>vs</p>
+      <div class="onStart hidden computerChoice">
+        <!--Hide display until user selects and then display computer selection-->
+        <button class="compBtn rock" value="rock"><i class="far fa-hand-rock fa-2x" aria-hidden="true"></i></button>
+        <button class="compBtn paper" value="paper"><i class="far fa-hand-paper fa-2x" aria-hidden="true"></i></button>
+        <button class="compBtn scissors" value="scissors"><i class="far fa-hand-scissors fa-2x" aria-hidden="true"></i></button>
       </div>
-      <div id="scissors" class="rps-item">
-        <button type="button" class="rps-button">
-          <i class="far fa-hand-scissors fa-9x"></i>
-        </button>
-      </div>
+      <!--Display return value from singleRound function-->
+      <p class="onStart hidden result"></p>
     </div>
   </div>
 
