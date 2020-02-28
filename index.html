@@ -31,7 +31,7 @@
     </div>
     <div class="choices">
       <button class="startGame">Start Game</button>
-      <button class="resetGame">Reset Game</button>
+      <button class="resetGame hidden">Reset Game</button>
       <div class="onStart hidden userChoice">
         <p>First to score 5 points!!! Make a choice! And may the odds be in your favor</p>
         <button class="userBtn rock" value="rock"><i class="far fa-hand-rock fa-2x" aria-hidden="true"></i></button>
@@ -41,9 +41,9 @@
       <p>vs</p>
       <div class="onStart hidden computerChoice">
         <!--Hide display until user selects and then display computer selection-->
-        <button class="compBtn rock" value="rock"><i class="far fa-hand-rock fa-2x" aria-hidden="true"></i></button>
-        <button class="compBtn paper" value="paper"><i class="far fa-hand-paper fa-2x" aria-hidden="true"></i></button>
-        <button class="compBtn scissors" value="scissors"><i class="far fa-hand-scissors fa-2x" aria-hidden="true"></i></button>
+        <button class="compBtn hidden rock" value="rock"><i class="far fa-hand-rock fa-2x" aria-hidden="true"></i></button>
+        <button class="compBtn hidden paper" value="paper"><i class="far fa-hand-paper fa-2x" aria-hidden="true"></i></button>
+        <button class="compBtn hidden scissors" value="scissors"><i class="far fa-hand-scissors fa-2x" aria-hidden="true"></i></button>
       </div>
       <!--Display return value from singleRound function-->
       <p class="onStart hidden result"></p>
