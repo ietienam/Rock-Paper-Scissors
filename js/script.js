@@ -1,135 +1,133 @@
-'use strict';
-
-// all buttons
-var allButtons = document.getElementsByTagName('button');
-
-// user buttons
-var userBtn = document.querySelectorAll('.userBtn');
-
-//  page element variables
-var startButton = document.querySelector('.startGame');
-var resetButton = document.querySelector('.resetGame');
-var roundResult = document.querySelector('.result');
-var gameWinner = document.querySelector('.roundWinner');
-var userScore = document.querySelector('.userScore');
-var computerScore = document.querySelector('.computerScore');
-
-// all selections
-var gameModeDisplay = document.querySelectorAll('.onStart');
-
-// user selections
-var rockButton = document.querySelector('.userChoice .rock');
-var paperButton = document.querySelector('.userChoice .paper');
-var scissorsButton = document.querySelector('.userChoice .scissors');
-
-// computer selections
-var crockButton = document.querySelector('.computerChoice .rock');
-var cpaperButton = document.querySelector('.computerChoice .paper');
-var cscissorsButton = document.querySelector('.computerChoice .scissors');
-
-// Computer randomly selects either rock, paper or scissors
-function computerPlay() {
-  var options = ['rock', 'paper', 'scissors'];
-  var selection = options[Math.floor(Math.random() * 3)];
-
-  if (selection === crockButton.value) {
-    if (crockButton.classList.contains('hidden')) {
-      crockButton.classList.remove('');
-    }
-    cpaperButton.classList.add('hidden');
-    cscissorsButton.classList.add('hidden');
-  } else if (selection = cpaperButton.value) {
-    if (cpaperButton.classList.contains('hidden')) {
-      cpaperButton.classList.remove('');
-    }
-    crockButton.classList.add('hidden');
-    cscissorsButton.classList.add('hidden');
-  } else {
-    if (cscissorsButton.classList.contains('hidden')) {
-      cscissorsButton.classList.remove('');
-    }
-    crockButton.classList.add('hidden');
-    cpaperButton.classList.add('hidden');
-  }
-
-  console.log(selection);
-  return selection;
+// This will return either 'rock', 'paper' or 'scissors'.
+function selectChoice() {
+  items = ['rock', 'paper', 'scissors']
+  element = Math.floor(Math.random() * items.length)
+  return items[element]
 }
 
-// GET user and computer selection and determine winner
-/**
- * 
-*/
+// Single round of Rock Paper Scissors
+// Two parameters(playerSelection, computerSelection)
+// Return a string that declares the winner of the round
+function playRound(playerSelection, computerSelection) {
 
-function singleRound(playerSelection, computerSelection = computerPlay()) {
-  if (
-    // Player win conditions
-    (playerSelection === rockButton.value && computerSelection === 'scissors') ||
-    (playerSelection === paperButton.value && computerSelection === 'rock') ||
-    (playerSelection === scissorsButton.value && computerSelection === 'paper')
+  // win, lose, tie
+  return roundWinner(playerSelection, computerSelection);
+}
+
+// Returns the results
+function roundWinner(playerSelection, computerSelection) {
+  if( // win
+      (playerSelection === 'rock' && computerSelection === 'scissors') ||
+      (playerSelection === 'paper' && computerSelection === 'rock') ||
+      (playerSelection === 'scissors' && computerSelection === 'paper')
   ) {
-    roundResult.textContent = `You Win! ${playerSelection.value} beats ${computerSelection}.`;
-    console.log(roundResult.textContent);
     return 'win';
-  } else if (
-    // Computer win conditions
-    (playerSelection === rockButton.value && computerSelection === 'paper') ||
-    (playerSelection === paperButton.value && computerSelection === 'scissors') ||
-    (playerSelection === scissorsButton.value && computerSelection === 'rock')
+  }
+
+  else if ( // lose
+      (playerSelection === 'rock' && computerSelection === 'paper') ||
+      (playerSelection === 'paper' && computerSelection === 'scissors') ||
+      (playerSelection === 'scissors' && computerSelection === 'rock')
   ) {
-    roundResult.textContent = `You Lose! ${computerSelection} beats ${playerSelection.value}.`;
-    console.log(roundResult.textContent);
     return 'lose';
-  } else {
-    // If there's no win or lose condition passing? Draw!
-    roundResult.textContent = `Draw! ${playerSelection.value} and ${computerSelection} the same.`;
-    console.log(roundResult.textContent);
-    return 'draw';
+  }
+
+  else { // draw
+    return 'tie';
   }
 }
 
+// Check overall winner
+function announceWinner(userScore, compScore) {
+  if(userScore > compScore) {
+    resultBoard.textContent = `You won! User: ${userScore} - Computer:
+                              ${computerScore}`;
+  } else {
+    resultBoard.textContent = `Computer won! User: ${userScore} - Computer:
+                              ${computerScore}`;
+  }
+}
+
+// Check the score
+function checkScore(numOne, numTwo) {
+  if (numOne >= 5 || numTwo >= 5) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+// Reset the game
 function reset() {
-  userScore.textContent = '0';
-  computerScore.textContent = '0';
-  roundResult.textContent = '';
-  gameWinner.textContent = '';
+  userScore = 0;
+  computerScore = 0;
+  userScoreBoard.textContent = userScore;
+  computerScoreBoard.textContent = computerScore;
+  resultBoard.textContent = 'START THE GAME';
 }
 
-function start() {
-  gameModeDisplay.forEach(elem => {
-    elem.classList.remove('hidden');
-  })
-}
+let userChoice = '';
+let computerChoice = '';
+let result = '';
+let userScore = 0;
+let computerScore = 0;
 
-/**
- * Return the winner after 5 rounds
- * and show each of their scores.
- * The one with the highest wins.
- */
-userBtn.forEach(btn => {
-  btn.addEventListener('click', e => {
-    e.preventDefault();
-    var result = singleRound(btn.value);
+let userScoreBoard = '';
+let computerScoreBoard = '';
+let resultBoard = '';
+let resetBox = '';
 
-    if (result === 'win') {
-      userScore.textContent = Number(userScore.textContent) + 1;
-    } else if (result === 'lose') {
-      computerScore.textContent = Number(computerScore.textContent) + 1;
-    } else {
-      return;
-    }
-
-    if (userScore.textContent == 5) {
-      userBtn.classList.add('hidden');
-      gameWinner.textContent = 'You Win!';
-    } else if (computerScore.textContent == 5) {
-      userList.classList.add('hidden');
-      gameWinner.textContent = 'You Lose!';
-    }
-  })
+resetBox = document.querySelector('#reset-box');
+resetBox.addEventListener('click', (e) => {
+  reset();
+  // And hide again.
+  resetBox.style.display = "none";
+  rpsBox.style.display = 'flex';
 })
 
-startButton.addEventListener('click', start);
-resetButton.addEventListener('click', reset);
-// create an event listener the uses for each click event, increment count by 1
-// reset button should return count to 0 and remove hidden class from selections
+const rpsBox = document.querySelector('#rps-boxes');
+const divs = document.querySelectorAll('.rps-item');
+
+divs.forEach( (div) => {
+  div.addEventListener('click', (e) => {
+    // Both of them will have either rock, paper, or scissors
+    userChoice = div.getAttribute('id');
+    computerChoice = selectChoice();
+    result = playRound(userChoice, computerChoice);
+
+    // Get resultBoard ready to present the result
+    resultBoard = document.querySelector('#round-result');
+    if(result === 'win') {
+      resultBoard.textContent = 'You win!';
+      userScore++;
+      userScoreBoard = document.querySelector('#user-score');
+      userScoreBoard.textContent = userScore;
+
+
+    } else if(result === 'lose') {
+      resultBoard.textContent = 'You lose!';
+      computerScore++;
+      computerScoreBoard = document.querySelector('#computer-score');
+      computerScoreBoard.textContent = computerScore;
+      // I need to have computerScore section and change the value
+    } else {
+      resultBoard.textContent = "It's tie!";
+    }
+
+    // Check the score to finish or replay
+    if (checkScore(userScore, computerScore)) {
+      // After checking a score, if it seems like if either of them has
+      // reached 5 points, we can pop up the reset button.
+      setTimeout(() => {
+        announceWinner(userScore, computerScore);
+        resetBox.style.display = "block";
+        rpsBox.style.display = 'none';
+      }, 100);
+    }
+  });
+});
+
+
+
+
+
