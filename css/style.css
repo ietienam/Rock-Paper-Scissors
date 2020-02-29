@@ -69,6 +69,7 @@ button {
   width: 100%;
   padding: .5rem;
   font-weight: 600;
+  font-size: 2rem;
 }
 
 .choices {
@@ -91,6 +92,7 @@ button {
 .result {
   width: 100%;
   font-weight: 600;
+  font-size: 2rem;
 }
 
 .hidden {
@@ -105,4 +107,8 @@ button {
 .resetGame {
   background-color: firebrick;
   color: aliceblue;
+}
+
+.userScore, .computerScore {
+  font-size: 2rem;
 }

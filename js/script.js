@@ -3,6 +3,11 @@
 // all buttons
 var allButtons = document.getElementsByTagName('button');
 
+var dash = document.querySelector('.dash');
+var vs = document.querySelector('.vs');
+var msg = document.querySelector('.msg');
+var list = document.querySelector('.list');
+
 // user buttons
 var userBtn = document.querySelectorAll('.userBtn');
 
@@ -74,14 +79,24 @@ function reset() {
     btn.classList.remove('hidden');
   });
   compBtn.forEach(btn => {
-    btn.classList.remove('hidden');
+    btn.classList.add('hidden');
   });
+  vs.classList.remove('hidden');
+  msg.classList.remove('hidden');
+  setTimeout(() => {
+    msg.classList.add('hidden');
+  }, 4000);
 }
 
 function start() {
   gameModeDisplay.forEach(elem => {
     elem.classList.remove('hidden');
-  })
+  });
+  vs.classList.remove('hidden');
+  setTimeout(() => {
+    msg.classList.add('hidden');
+    list.classList.add('hidden');
+  }, 4000);
 }
 
 function announceWinner(userScore, computerScore) {
@@ -116,6 +131,7 @@ userBtn.forEach(btn => {
 
     if (canEndGame(user, computer) === true) {
       resetButton.classList.remove('hidden');
+      vs.classList.add('hidden');
       userBtn.forEach(btn => {
         btn.classList.add('hidden');
       });

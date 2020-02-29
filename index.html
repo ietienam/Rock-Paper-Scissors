@@ -15,7 +15,7 @@
       <h1>Rock Paper Scissors</h1>
       <p class="author">Built by: <a href="https://inie.netlify.com" target="_blank">Ini Etienam</a></p>
     </header>
-    <ul>
+    <ul class="list">
       <li>Rock breaks scissors</li>
       <li>Paper covers rock</li>
       <li>Scissors cuts paper</li>
@@ -24,7 +24,7 @@
       <h2>Scores</h2>
       User
       <span class="userScore">0</span>
-      <span>-</span>
+      <span class="dash">-</span>
       <span class="computerScore">0</span>
       Computer
       <!--Return the results of the game function winner-->
@@ -34,12 +34,12 @@
       <button class="startGame">Start Game</button>
       <button class="resetGame hidden">Reset Game</button>
       <div class="onStart hidden userChoice">
-        <p>First to score 5 points!!! Make a choice! And may the odds be in your favor</p>
+        <p class="msg">First to score 5 points!!! Make a choice! And may the odds be in your favor</p>
         <button class="userBtn rock" value="rock"><i class="far fa-hand-rock fa-2x" aria-hidden="true"></i></button>
         <button class="userBtn paper" value="paper"><i class="far fa-hand-paper fa-2x" aria-hidden="true"></i></button>
         <button class="userBtn scissors" value="scissors"><i class="far fa-hand-scissors fa-2x" aria-hidden="true"></i></button>
       </div>
-      <p>vs</p>
+      <p class="vs hidden">vs</p>
       <div class="onStart hidden computerChoice">
         <!--Hide display until user selects and then display computer selection-->
         <button class="compBtn hidden rock" value="rock"><i class="far fa-hand-rock fa-2x" aria-hidden="true"></i></button>
