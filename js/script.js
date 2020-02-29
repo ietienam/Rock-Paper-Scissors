@@ -116,7 +116,7 @@ userBtn.forEach(btn => {
     var result = singleRound(userSelection, computerSelection);
     var user = Number(userScore.textContent);
     var computer = Number(computerScore.textContent);
-
+    
     if (result === 'win') {
       user += 1;
       userScore.textContent = `${user}`;
