@@ -116,7 +116,7 @@ userBtn.forEach(btn => {
     var result = singleRound(userSelection, computerSelection);
     var user = Number(userScore.textContent);
     var computer = Number(computerScore.textContent);
-    
+
     if (result === 'win') {
       user += 1;
       userScore.textContent = `${user}`;
@@ -145,6 +145,9 @@ userBtn.forEach(btn => {
 
 startButton.addEventListener('click', e => {
   start();
+  setTimeout(() => {
+    document.querySelector('.name').textContent = prompt('What is your name?', 'User');
+  }, 1000);
   startButton.classList.add('hidden');
   resetButton.classList.add('hidden');
 })
